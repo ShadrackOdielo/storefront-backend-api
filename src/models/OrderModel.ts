@@ -1,5 +1,5 @@
 import { query } from "../database";
-import { Product } from "./Product";
+import { Product } from "./ProductModel";
 
 type Order = {
   user_id: number;

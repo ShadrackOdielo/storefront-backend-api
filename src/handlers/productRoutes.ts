@@ -1,11 +1,12 @@
 import { Request, Response, Router } from "express";
 import verifyToken from "../middlewares/verifyToken";
-import ProductStore from "../models/Product";
+import ProductStore from "../models/ProductModel";
 
 const store = new ProductStore();
 
 const router = Router();
 
+// this is the route handler for the /products endpoint
 const index = async (req: Request, res: Response) => {
   try {
     const products = await store.index();

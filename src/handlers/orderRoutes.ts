@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import verifyToken, { CustomRequest } from "../middlewares/verifyToken";
-import { OrderStore } from "../models/Order";
+import { OrderStore } from "../models/OrderModel";
 
 const store = new OrderStore();
 const router = Router();

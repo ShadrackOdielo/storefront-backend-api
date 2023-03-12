@@ -15,7 +15,7 @@ export class DashboardQueries {
       const result = await query(sql);
       return result.rows;
     } catch (error) {
-      throw new Error(`Could not get products. Error: ${error}`);
+      throw new Error(`Products not accessed Error: ${error}`);
     }
   };
 }

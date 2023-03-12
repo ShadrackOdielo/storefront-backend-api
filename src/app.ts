@@ -1,6 +1,6 @@
 import cors from "cors";
 import express, { Application, Request, Response } from "express";
-import { mountRoutes } from "./handlers";
+import  routes  from "./handlers/index";
 
 const app: Application = express();
 
@@ -12,7 +12,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-mountRoutes(app);
+routes(app);
 
 app.get("/", async function (req: Request, res: Response) {
   res.send("Hello World!");

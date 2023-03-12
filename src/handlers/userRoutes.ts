@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
 import jwt from "jsonwebtoken";
 import verifyToken from "../middlewares/verifyToken";
-import UserStore from "../models/User";
+import UserStore from "../models/UserModel";
 
 const store = new UserStore();
 const router = Router();
