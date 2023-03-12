@@ -2,17 +2,30 @@
   "dev": {
     "driver": "pg",
     "host": "127.0.0.1",
-    "port": 5432,
-    "database": "storefront",
-    "user": "postgres",
-    "password": "postgres"
+    "database": {
+      "ENV": "PG_DB"
+    },
+    "user": {
+      "ENV": "PG_USER"
+    },
+    "password": "postgres",
+    "port": {
+      "ENV": "PG_PORT"
+    }
   },
   "test": {
     "driver": "pg",
     "host": "127.0.0.1",
-    "port": 5433,
-    "database": "storefront",
-    "user": "postgres",
-    "password": "postgres"
-  }
+    "database": {
+      "ENV": "PG_DB_TEST"
+    },
+    "user": {
+      "ENV": "PG_USER"
+    },
+    "password": "postgres",
+    "port": {
+      "ENV": "PG_PORT"
+    }
+  },
+  "sql-file": true
 }

@@ -1,18 +1,28 @@
-import dotenv from "dotenv"
-import {ClientConfig, Pool} from "pg"
+import { config } from "dotenv";
+import { Pool, types } from "pg";
 
-dotenv.config()
+config();
 
-const config: ClientConfig = {
-  host: process.env.POSTGRES_HOST,
-  port: process.env.POSTGRES_PORT as unknown as number,
-  database: process.env.POSTGRES_DB,
-  user: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD
-}
+const isTest = process.env.NODE_ENV === "test";
 
-if (process.env.ENV === "test") {
-  config.port = process.env.POSTGRES_PORT_TEST as unknown as number
-}
+// Parse numeric values as floats instead of strings
+types.setTypeParser(1700, function (val) {
+  return parseFloat(val);
+});
 
-export default new Pool(config); 
+const pool = new Pool({
+  database: isTest ? process.env.PG_DB_TEST : process.env.PG_DB,
+  host: process.env.PG_HOST,
+  password: process.env.PG_PASSWORD,
+  port: Number(process.env.PG_PORT),
+  user: process.env.PG_USER,
+});
+
+export const query = async (text: string, params?: unknown[]) => {
+  const start = Date.now();
+  const res = await pool.query(text, params);
+  const duration = Date.now() - start;
+  !isTest &&
+    console.log("executed query", { text, duration, rows: res.rowCount });
+  return res;
+};
