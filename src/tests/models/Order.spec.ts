@@ -1,7 +1,7 @@
-import { query } from "../../src/database";
-import { OrderStore } from "../../models/Order";
-import UserStore from "../../models/User";
-import { resetTables } from "../../src/utils/resetTables";
+import { query } from "../../database";
+import { OrderStore } from "./../../models/OrderModel";
+import UserStore from "../../models/UserModel";
+import { resetTables } from "./../../utils/resetTables";
 
 const store = new OrderStore();
 const userStore = new UserStore();

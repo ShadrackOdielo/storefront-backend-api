@@ -1,6 +1,6 @@
-import { query } from "../../src/database";
-import ProductStore from "../../models/Product";
-import { resetTables } from "../../src/utils/resetTables";
+import { query } from "./../../database";
+import ProductStore from "../../models/ProductModel";
+import { resetTables } from "./../../utils/resetTables";
 
 const store = new ProductStore();
 
@@ -11,7 +11,7 @@ describe("Product Model", () => {
 
   beforeEach(async () => {
     await query(
-      `INSERT INTO products (id, name, price, category) VALUES (1, 'Mango', 257.99, 'fruits')`
+      `INSERT INTO products (id, name, price, category) VALUES (1, 'Banana', 120.99, 'fruits')`
     );
   });
 
@@ -19,13 +19,13 @@ describe("Product Model", () => {
     await query("DELETE FROM products");
   });
 
-  it("index method should return a list of products", async () => {
+  it("index method should return a list of productsin json format", async () => {
     const result = await store.index();
     expect(result).toEqual([
       {
         id: 1,
-        name: "Mango",
-        price: 257.99,
+        name: "Banana",
+        price: 120.99,
         category: "fruits",
       },
     ]);
@@ -35,8 +35,8 @@ describe("Product Model", () => {
     const result = await store.show(1);
     expect(result).toEqual({
       id: 1,
-      name: "Mango",
-      price: 257.99,
+      name: "Banana",
+      price: 120.99,
       category: "fruits",
     });
   });

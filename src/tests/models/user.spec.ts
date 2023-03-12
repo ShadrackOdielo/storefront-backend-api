@@ -1,6 +1,6 @@
-import { query } from "../../src/database";
-import UserStore from "../../models/User";
-import { resetTables } from "../../src/utils/resetTables";
+import { query } from "../../database";
+import UserStore from "../../models/UserModel";
+import { resetTables }  from "./../../utils/resetTables";
 
 const store = new UserStore();
 
@@ -39,19 +39,19 @@ describe("User Model", () => {
     expect(store.create).toBeDefined();
 
     const result = await store.create({
-      firstName: "Jane",
-      lastName: "Doe",
-      username: "jane",
-      password: "password",
+      firstName: "shadrack",
+      lastName: "omondi",
+      username: "omondishadrack",
+      password: "password123",
     });
-    expect(result.firstName).toEqual("Jane");
-    expect(result.lastName).toEqual("Doe");
+    expect(result.firstName).toEqual("shadrack");
+    expect(result.lastName).toEqual("omond");
   });
 
   it("should throw error if username is taken already", async () => {
     await expectAsync(
       store.create({
-        username: "john",
+        username: "omondishadrack",
         firstName: "name",
         lastName: "name",
         password: "password",

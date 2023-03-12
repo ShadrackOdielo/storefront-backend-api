@@ -1,8 +1,8 @@
 import request from "supertest";
-import app from "../../src/app";
-import { query } from "../../src/database";
-import UserStore, { UserWithId } from "../../src/models/UserModel";
-import { resetTables } from "../../src/utils/resetTables";
+import app from "./../../app";
+import { query } from "./../../database";
+import UserStore, { UserWithId } from "../../models/UserModel";
+import { resetTables } from "../../utils/resetTables";
 
 let authedUser: UserWithId;
 let token: string;

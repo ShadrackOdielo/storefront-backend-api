@@ -1,7 +1,7 @@
 import request from "supertest";
-import app from "../../src/app";
-import UserStore from "../../models/User";
-import { resetTables } from "../../src/utils/resetTables";
+import app from "../../app";
+import UserStore from "../../models/UserModel";
+import { resetTables } from "../../utils/resetTables";
 
 const store = new UserStore();
 
